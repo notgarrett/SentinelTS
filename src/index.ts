@@ -2,7 +2,7 @@
 
 import Client from './client';
 // @ts-ignore
-new Client({
+export const client = new Client({
   intents: ['DIRECT_MESSAGES', 'GUILD_MESSAGES', 'GUILDS', 'GUILD_MEMBERS'],
 })
   .init()
@@ -11,6 +11,7 @@ new Client({
 //Express Initialization
 
 import express, { Application, Request, Response } from 'express';
+import routes from './routes/routes';
 
 const app: Application = express();
 const port = 3000;
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).send({
-    message: 'Hello World!',
+    message: 'Server.',
   });
 });
 
@@ -30,5 +31,7 @@ try {
     console.log(`Connected successfully on port ${port}`);
   });
 } catch (error: any) {
-  console.error(`Error occured: ${error.message}`);
+  console.error(`Error occurred: ${error.message}`);
 }
+
+routes(app);

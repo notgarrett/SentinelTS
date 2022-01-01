@@ -1,5 +1,3 @@
 node_modules
 src/config.json
-.prettierrc.json
-.eslintrc.json
 .idea
