@@ -17,7 +17,7 @@ class ExtendedClient extends Client {
       // @ts-ignore
       useNewUrlParser: true,
     });
-    const commandPath = path.join(__dirname, '..', 'Commands');
+    const commandPath = path.join(__dirname, '..', 'commands');
     readdirSync(commandPath).forEach((dir) => {
       const commands = readdirSync(`${commandPath}/${dir}`).filter((file) =>
         file.endsWith('.ts')
@@ -34,7 +34,7 @@ class ExtendedClient extends Client {
       }
     });
 
-    const eventPath = path.join(__dirname, '..', 'Events');
+    const eventPath = path.join(__dirname, '..', 'events');
     for (const file of readdirSync(eventPath)) {
       const { event } = await import(`${eventPath}/${file}`);
       this.events.set(event.name, event);
