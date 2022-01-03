@@ -9,6 +9,7 @@ const VerificationModel = model<Verification>(
 );
 
 export const getVerificationProfile = (req: Request, res: Response) => {
+  console.log('Received.');
   const query = req.params;
   VerificationModel.findOne(query, (err: any, docs: any) => {
     if (err) throw err;
