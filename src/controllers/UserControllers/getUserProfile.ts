@@ -10,6 +10,6 @@ export const getUserProfile = (req: Request, res: Response) => {
   UserModel.findOne(query, (err: any, docs: any) => {
     if (err) throw err;
     if (docs) return res.send(docs);
-    else return res.sendStatus(401);
+    else return res.sendStatus(404);
   });
 };
