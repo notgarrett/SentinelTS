@@ -1,12 +1,26 @@
 import axios from 'axios';
 
 export class RAPI {
-  static async getId(name: string) {
+  static async getProfileByUsername(name: string) {
     console.log(name);
     return new Promise((resolve, reject) => {
       axios({
         method: 'get',
         url: `https://api.roblox.com/users/get-by-username?username=${name}`,
+        responseType: 'json',
+      }).then(function (response) {
+        console.log(response);
+        if (response.data.Id) resolve(response.data);
+        resolve(false);
+      });
+    });
+  }
+
+  static async getProfileById(robloxId: string) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'get',
+        url: `https://api.roblox.com/users/${robloxId}`,
         responseType: 'json',
       }).then(function (response) {
         console.log(response);

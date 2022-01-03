@@ -10,6 +10,5 @@ export const verificationModel = new Schema<Verification>({
     type: String,
     required: true,
   },
+  createdAt: { type: Date, expires: '2m', default: Date.now },
 });
-
-verificationModel.index({ createdAt: 1 }, { expireAfterSeconds: 3600 });

@@ -8,7 +8,11 @@ const VerificationModel = model<Verification>(
   verificationModel
 );
 
-export const getVerificationProfiles = (req: Request, res: Response) => {
-  const query = req.body || {};
-  res.send(VerificationModel.find(query));
+export const getVerificationProfile = (req: Request, res: Response) => {
+  const query = req.params;
+  VerificationModel.findOne(query, (err: any, docs: any) => {
+    if (err) throw err;
+    if (docs) return res.send(docs);
+    else return res.sendStatus(401);
+  });
 };

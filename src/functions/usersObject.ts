@@ -21,7 +21,7 @@ export class Users {
     return UserModel.updateOne(query, update);
   }
 
-  static async uupdateAndSaveUser(query: object, update: object) {
+  static async updateAndSaveUser(query: object, update: object) {
     return UserModel.updateOne(query, update, { upsert: true });
   }
 

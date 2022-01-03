@@ -1,5 +1,5 @@
 import { Command } from '../../interfaces';
-import { Users } from '../../functions/usersObject';
+import { Users } from '../../functions';
 
 export const command: Command = {
   name: 'wipe',

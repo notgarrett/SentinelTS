@@ -6,6 +6,9 @@ export const userModel = new Schema<User>({
     type: String,
     required: true,
   },
+  RobloxUserName: {
+    type: String,
+  },
   RobloxId: {
     type: String,
     required: true,

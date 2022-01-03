@@ -30,8 +30,10 @@ export const updateNickname = async (member: any) => {
   console.log(aeRank);
   console.log(academiaRank);
 
-  let robloxProfile: any = await RAPI.getId(profile.DiscordId);
-  let robloxName: string = robloxProfile.Username;
+  const robloxProfile: any = await RAPI.getProfileById(profile.RobloxId);
+  console.log(robloxProfile);
+  const robloxName: string = robloxProfile.Username;
+  console.log(robloxName);
 
   console.log('User is in the database');
 
@@ -41,13 +43,6 @@ export const updateNickname = async (member: any) => {
 
   console.log(aetable);
 
-  // @ts-ignore
-  /*if (aetable[`${aeRank}`]) {
-    // @ts-ignore
-    await member.setNickname(`${aetable[`${aeRank}`]} | ${robloxName}`);
-    return;
-  }
-*/
   if (!academiaRank)
     return await member.setNickname(`X | ${member.user.username}`);
 
