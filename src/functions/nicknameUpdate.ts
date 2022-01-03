@@ -2,8 +2,9 @@ import { getUser } from './getUser';
 import { RAPI } from './robloxObject';
 import aetable from './tables/AETable.json';
 import academiatable from './tables/AcademiaTable.json';
+import { GuildMember } from 'discord.js';
 
-export const updateNickname = async (member: any) => {
+export const updateNickname = async (member: GuildMember) => {
   console.log('WHAT');
   if (!member) return;
 
@@ -18,7 +19,12 @@ export const updateNickname = async (member: any) => {
   const profile: any = await getUser({ DiscordId: discordId });
   console.log(profile);
 
-  if (!profile) return await member.setNickname(`X | ${member.user.username}`);
+  if (!profile)
+    return await member
+      .setNickname(`X | ${member.user.username}`)
+      .catch((err: any) => {
+        console.log(err);
+      });
   //
 
   const academiaRank: any = await RAPI.getGroupRankId(

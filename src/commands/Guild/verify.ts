@@ -6,6 +6,7 @@ import {
 } from '../../functions';
 import { GuildMember } from 'discord.js';
 import { Embeds } from '../../embeds/embeds';
+import { updateNickname } from '../../functions/nicknameUpdate';
 
 export const command: Command = {
   name: 'verify',
@@ -43,5 +44,7 @@ export const command: Command = {
     await generateVerification(serverMember.id).then((v: any) =>
       userResponse.verification(v.VerificationKey)
     );
+
+    await updateNickname(serverMember);
   },
 };
