@@ -4,6 +4,7 @@ import {
   security,
   getVerificationProfiles,
   getVerificationProfile,
+  getUserProfile,
 } from '../controllers';
 
 const routes = (app: any) => {
@@ -11,6 +12,8 @@ const routes = (app: any) => {
     .route('/profiles/')
     .get(getUserProfiles)
     .post(security, createUserProfile);
+
+  app.route('/profiles/:RobloxId').get(getUserProfile);
 
   app.route('/verifications/').get(security, getVerificationProfiles);
 
