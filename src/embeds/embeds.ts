@@ -20,7 +20,9 @@ export class Embeds {
       .setTimestamp()
       .setFooter(footer);
 
-    this.channel.send({ embeds: [embed] });
+    this.channel.send({ embeds: [embed] }).catch((err) => {
+      console.log(err);
+    });
   }
 
   warn(title: string, message: string) {
@@ -32,7 +34,9 @@ export class Embeds {
       .setTimestamp()
       .setFooter(footer);
 
-    this.channel.send({ embeds: [embed] });
+    this.channel.send({ embeds: [embed] }).catch((err) => {
+      console.log(err);
+    });
   }
 
   success(title: string, message: string) {
@@ -44,7 +48,9 @@ export class Embeds {
       .setTimestamp()
       .setFooter(footer);
 
-    this.channel.send({ embeds: [embed] });
+    this.channel.send({ embeds: [embed] }).catch((err) => {
+      console.log(err);
+    });
   }
 
   failure(title: string, message: string) {
@@ -56,7 +62,9 @@ export class Embeds {
       .setTimestamp()
       .setFooter(footer);
 
-    this.channel.send({ embeds: [embed] });
+    this.channel.send({ embeds: [embed] }).catch((err) => {
+      console.log(err);
+    });
   }
 
   verification(key: unknown) {
@@ -68,6 +76,8 @@ export class Embeds {
       .setDescription(`Type ${key} in chat in the game listed above to verify!`)
       .setTimestamp()
       .setFooter(footer);
-    this.channel.send({ embeds: [embed] });
+    this.channel.send({ embeds: [embed] }).catch((err) => {
+      console.log(err);
+    });
   }
 }

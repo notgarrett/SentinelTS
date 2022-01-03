@@ -27,15 +27,16 @@ export const command: Command = {
         'If you have a new Roblox ID, please use the ae!reset command.'
       );
 
+    response.notification(
+      "You have been DM'd with your code!",
+      'If you have not received a message, please check your message privacy settings and try again.'
+    );
+
     let verification: any = await getVerification({
       DiscordId: serverMember.id,
     });
 
     if (verification) {
-      response.notification(
-        "You have been DM'd with your code!",
-        'If you have not received a message, please check your message privacy settings.'
-      );
       return userResponse.verification(verification.VerificationKey);
     }
 

@@ -4,9 +4,8 @@ import Client from './client';
 // @ts-ignore
 export const client = new Client({
   intents: ['DIRECT_MESSAGES', 'GUILD_MESSAGES', 'GUILDS', 'GUILD_MEMBERS'],
-})
-  .init()
-  .then((r) => console.log('Initialized.'));
+});
+client.init();
 
 //Express Initialization
 
