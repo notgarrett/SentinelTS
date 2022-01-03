@@ -31,8 +31,13 @@ export const command: Command = {
       DiscordId: serverMember.id,
     });
 
-    if (verification)
+    if (verification) {
+      response.notification(
+        "You have been DM'd with your code!",
+        'If you have not received a message, please check your message privacy settings.'
+      );
       return userResponse.verification(verification.VerificationKey);
+    }
 
     await generateVerification(serverMember.id).then((v: any) =>
       userResponse.verification(v.VerificationKey)
