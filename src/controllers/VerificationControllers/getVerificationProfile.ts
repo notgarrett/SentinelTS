@@ -14,6 +14,6 @@ export const getVerificationProfile = (req: Request, res: Response) => {
   VerificationModel.findOne(query, (err: any, docs: any) => {
     if (err) throw err;
     if (docs) return res.send(docs);
-    else return res.sendStatus(404);
+    else return res.send({ status: 'failed', message: 'Data does not exist.' });
   });
 };
