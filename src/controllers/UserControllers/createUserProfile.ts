@@ -33,7 +33,7 @@ export const createUserProfile = (req: Request, res: Response) => {
     })
     .catch(console.error);
 
-  const guild = client.guilds.resolve('702335603366297652');
+  const guild = client.guilds.resolve('518686827096440832');
   console.log(guild);
   if (!guild) return;
 
