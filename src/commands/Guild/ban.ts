@@ -14,15 +14,8 @@ export const command: Command = {
       return channelMessage.failure('Command failed.', 'Missing arguments.');
     }
 
-    /*
-      const empyria = 'empyria';
-      const elysium = 'elysium';
-      const universe = 'universe';
-      */
-
     const robloxUser: any = await RAPI.getProfileByUsername(args[0]);
     if (!robloxUser)
       return channelMessage.failure('Failed.', 'That user does not exist.');
-    else return channelMessage.success('WOOH.', `F ${robloxUser.Username}`);
   },
 };

@@ -1,6 +1,6 @@
 import Discord, { MessageEmbed, TextBasedChannels, User } from 'discord.js';
 const url: string =
-  'https://www.roblox.com/games/5079873220/AE-The-Sentinel-Verification';
+  'https://www.roblox.com/games/7826795703/TAU-The-Sentinel-Verification';
 const url2: string = 'https://www.roblox.com/games/5037618249/data';
 const footer: string = 'Developed by ArtimusPhilosophus';
 const author: string = 'The Sentinel';
