@@ -38,6 +38,7 @@ export const updateNickname = async (member: GuildMember) => {
 
   const robloxProfile: any = await RAPI.getProfileById(profile.RobloxId);
   console.log(robloxProfile);
+
   const robloxName: string = robloxProfile.Username;
   console.log(robloxName);
 
@@ -46,6 +47,20 @@ export const updateNickname = async (member: GuildMember) => {
   console.log('User has a rank in academia');
 
   if (!aeRank) console.log('Member is not in AE');
+
+  // @ts-ignore
+  if (aetable[`${aeRank}`]) {
+    // @ts-ignore
+
+    await member
+      .setNickname(
+        // @ts-ignore
+        `${aetable[`${aeRank}`]} | ${robloxName}`
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   console.log(aetable);
 
