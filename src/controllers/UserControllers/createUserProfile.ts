@@ -44,6 +44,13 @@ export const createUserProfile = (req: Request, res: Response) => {
   if (!member) return;
   console.log(member);
 
-  if (verifiedRole) member.roles.add(verifiedRole).catch(console.error);
-  if (unverifiedRole) member.roles.remove(unverifiedRole).catch(console.error);
+  if (verifiedRole)
+    member.roles.add(verifiedRole).catch((err) => {
+      console.log(err);
+    });
+
+  if (unverifiedRole)
+    member.roles.remove(unverifiedRole).catch((err) => {
+      console.log(err);
+    });
 };

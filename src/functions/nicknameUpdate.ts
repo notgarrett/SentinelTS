@@ -50,15 +50,23 @@ export const updateNickname = async (member: GuildMember) => {
   console.log(aetable);
 
   if (!academiaRank)
-    return await member.setNickname(`X | ${member.user.username}`);
+    return await member
+      .setNickname(`X | ${member.user.username}`)
+      .catch((err) => {
+        console.log(err);
+      });
 
   // @ts-ignore
   if (academiatable[`${academiaRank}`]) {
     // @ts-ignore
 
-    await member.setNickname(
-      // @ts-ignore
-      `${academiatable[`${academiaRank}`]} | ${robloxName}`
-    );
+    await member
+      .setNickname(
+        // @ts-ignore
+        `${academiatable[`${academiaRank}`]} | ${robloxName}`
+      )
+      .catch((err) => {
+        console.log(err);
+      });
   }
 };
