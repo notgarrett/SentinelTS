@@ -51,8 +51,7 @@ export const updateNickname = async (member: GuildMember) => {
   // @ts-ignore
   if (aetable[`${aeRank}`]) {
     // @ts-ignore
-
-    await member
+    return await member
       .setNickname(
         // @ts-ignore
         `${aetable[`${aeRank}`]} | ${robloxName}`
