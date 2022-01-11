@@ -5,7 +5,6 @@ import academiatable from './tables/AcademiaTable.json';
 import { GuildMember } from 'discord.js';
 
 export const updateNickname = async (member: GuildMember) => {
-  console.log('WHAT');
   if (!member) return;
 
   console.log('Member exists');
