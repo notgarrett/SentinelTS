@@ -5,8 +5,8 @@ import { checkBotAdmin } from '../../functions/commandAdmin';
 import { banlist } from '../../functions/banlistObject';
 
 export const command: Command = {
-  name: 'ban',
-  aliases: ['b'],
+  name: 'unban',
+  aliases: ['ub'],
   run: async (client, message, args) => {
     const channelMessage = new Embeds(message.channel);
 
@@ -25,6 +25,6 @@ export const command: Command = {
     if (!robloxUser)
       return channelMessage.failure('Failed.', 'That user does not exist.');
 
-    await banlist.add(robloxUser.Id);
+    await banlist.remove(robloxUser.Id);
   },
 };
