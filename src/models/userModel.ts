@@ -13,7 +13,7 @@ export const userModel = new Schema<User>({
     type: String,
     required: true,
   },
-  DiscordRoles: {
+  Roles: {
     type: Array,
   },
 });
