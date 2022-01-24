@@ -1,4 +1,5 @@
 import { getUser } from './getUser';
+import { Users } from '../functions/usersObject';
 import { RAPI } from './robloxObject';
 import academiatable from './tables/AcademiaTable.json';
 import { GuildMember } from 'discord.js';
@@ -29,6 +30,10 @@ export const updateNickname = async (member: GuildMember) => {
   const robloxProfile: any = await RAPI.getProfileById(profile.RobloxId);
 
   const robloxName: string = robloxProfile.Username;
+  await Users.updateUser(
+    { DiscordId: discordId },
+    { RobloxUserName: robloxName }
+  );
 
   if (!academiaRank)
     return await member
