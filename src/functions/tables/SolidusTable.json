@@ -1,0 +1,62 @@
+[
+  {
+    "name": "L2",
+    "value": 14
+  },
+  {
+    "name": "L3",
+    "value": 33
+  },
+  {
+    "name": "S1",
+    "value": 75
+  },
+  {
+    "name": "S2",
+    "value": 95
+  },
+  {
+    "name": "S3",
+    "value": 118
+  },
+  {
+    "name": "D1",
+    "value": 148
+  },
+  {
+    "name": "D2",
+    "value": 185
+  },
+  {
+    "name": "D3",
+    "value": 231
+  },
+  {
+    "name": "C1",
+    "value": 289
+  },
+  {
+    "name": "C2",
+    "value": 362
+  },
+  {
+    "name": "C3",
+    "value": 435
+  },
+  {
+    "name": "A1",
+    "value": 507
+  },
+  {
+    "name": "A2",
+    "value": 580
+  },
+  {
+    "name": "A3",
+    "value": 652
+  },
+  {
+    "name": "Scion",
+    "value": 750
+  }
+]

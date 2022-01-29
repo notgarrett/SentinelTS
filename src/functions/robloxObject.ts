@@ -10,7 +10,6 @@ export class RAPI {
         responseType: 'json',
       })
         .then(function (response) {
-          console.log(response);
           if (response.data.Id) resolve(response.data);
           resolve(false);
         })
@@ -28,7 +27,6 @@ export class RAPI {
         responseType: 'json',
       })
         .then(function (response) {
-          console.log(response);
           if (response.data.Id) resolve(response.data);
           resolve(false);
         })

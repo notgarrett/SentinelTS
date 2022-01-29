@@ -3,6 +3,5 @@ export interface User {
   DiscordId: string;
   Roles?: Array<string>;
   RobloxUserName: string;
-  Meritum: number;
-  Capitum: number;
+  Solidus: number;
 }

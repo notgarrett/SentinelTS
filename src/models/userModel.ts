@@ -16,4 +16,7 @@ export const userModel = new Schema<User>({
   Roles: {
     type: Array,
   },
+  Solidus: {
+    type: Number,
+  },
 });

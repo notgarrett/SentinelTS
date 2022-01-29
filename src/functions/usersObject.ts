@@ -17,12 +17,8 @@ export class Users {
     return UserModel.deleteOne(query);
   }
 
-  static async updateUser(query: object, update: object) {
-    return UserModel.updateOne(query, update);
-  }
-
-  static async updateAndSaveUser(query: object, update: object) {
-    return UserModel.updateOne(query, update, { upsert: true });
+  static async updateUser(query: object, update: object, options: object = {}) {
+    return UserModel.updateOne(query, update, options);
   }
 
   static async addRoles(query: object, roles: any) {
