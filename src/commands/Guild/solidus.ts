@@ -21,7 +21,7 @@ export const command: Command = {
       name = table[i].name;
       if (solidus < table[i].value) break;
     }
-
+    const random = 0;
     serverResponse.solidus(userName, solidus, count, name);
   },
 };
