@@ -14,7 +14,7 @@ export const command: Command = {
     let name: string = 'L1';
 
     const userName: string = profile.RobloxUserName || 'NoName';
-    let count: number = 1;
+    let count: number = 0;
 
     for (let i in table) {
       count = table[i].value;
