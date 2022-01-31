@@ -29,7 +29,10 @@ export const command: Command = {
     RoleConfigModel.updateOne(
       { RoleId: xxx },
       { Security: Number(args[1]) },
-      { upsert: true }
+      { upsert: true },
+      (err, docs) => {
+        console.log(docs);
+      }
     );
 
     serverResponse.success(

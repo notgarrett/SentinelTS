@@ -1,28 +1,24 @@
 import { model } from 'mongoose';
 import { RoleConfig } from '../interfaces';
 import { roleConfigModel } from '../models';
-import { Message } from 'discord.js';
+import { Message, Permissions } from 'discord.js';
 import { Embeds } from '../embeds/embeds';
 
 const RoleConfigModel = model<RoleConfig>('RoleConfig', roleConfigModel);
 
-const roleName = 'Guardian';
-
-export const checkBotAdmin = (msg: any) => {
-  return !!msg.member.roles.cache.find((r: any) => r.name === roleName);
-};
-
 export const securityCheck = async (message: Message, number: number) => {
-  const list: any = RoleConfigModel.find({});
-  let level: number = 0;
+  if (message.member?.permissions.has(Permissions.FLAGS.ADMINISTRATOR))
+    return true;
+
+  const list: any = await RoleConfigModel.find({});
+
   for (let i in list) {
-    const id = list[i].RoleId;
-    if (await message.member?.roles.resolveId(id)) {
-      if (list[i].Security > level) level = list[i].Security;
-      if (level === 3) return true;
+    if (!list[i]) continue;
+    const id: string = list[i].RoleId;
+    if (message.member?.roles.resolve(id)) {
+      if (list[i].Security >= number) return true;
     }
   }
-  if (level >= number) return true;
 
   const serverResponse = new Embeds(message.channel);
   serverResponse.failure(
