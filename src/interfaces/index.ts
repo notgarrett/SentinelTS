@@ -6,3 +6,4 @@ export { ServerConfig } from './serverConfig';
 export { Clan } from './clan';
 export { Verification } from './verification';
 export { Banlist } from './banlist';
+export { RoleConfig } from './roleConfig';

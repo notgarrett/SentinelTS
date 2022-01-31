@@ -1,20 +1,16 @@
 import { Command } from '../../interfaces';
 import { RAPI } from '../../functions';
 import { Embeds } from '../../embeds/embeds';
-import { checkBotAdmin } from '../../functions/commandAdmin';
+import { securityCheck } from '../../functions/commandAdmin';
 import { banlist } from '../../functions/banlistObject';
 
 export const command: Command = {
   name: 'unban',
   aliases: ['ub'],
   run: async (client, message, args) => {
-    const channelMessage = new Embeds(message.channel);
+    if (!(await securityCheck(message, 3))) return;
 
-    if (!checkBotAdmin(message))
-      return channelMessage.failure(
-        'Missing Permissions',
-        'You do not have permission to use that command.'
-      );
+    const channelMessage = new Embeds(message.channel);
 
     console.log(args[0]);
     if (!args[0]) {

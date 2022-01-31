@@ -1,11 +1,7 @@
-import mongoose from 'mongoose';
-import { userModel } from '../../models';
-import { User } from '../../interfaces';
 import { Message } from 'discord.js';
 import { Embeds } from '../../embeds/embeds';
 import { RAPI } from '../robloxObject';
-
-const UserModel = mongoose.model<User>('Users', userModel);
+import { Users } from '../usersObject';
 
 export const pointsDecrease = async (
   number: number,
@@ -14,19 +10,30 @@ export const pointsDecrease = async (
 ) => {
   const serverResponse = new Embeds(message.channel);
 
-  const robloxId: any = await RAPI.getProfileByUsername(RobloxUserName);
-
-  if (!robloxId)
-    return serverResponse.warn(
-      'Invalid username.',
-      `${RobloxUserName} is not a valid Roblox user.`
+  const robloxProfile: any = await RAPI.getProfileByUsername(RobloxUserName);
+  if (!robloxProfile)
+    return serverResponse.failure(
+      'Invalid User',
+      'Roblox user does not exist.'
     );
 
-  UserModel.updateOne(
-    { RobloxId: robloxId },
-    { $inc: { Solidus: -number } },
-    { upsert: true }
+  if (!(await Users.getUser({ RobloxId: robloxProfile.Id })))
+    return serverResponse.failure(
+      'Invalid User',
+      'User is  not in the database.'
+    );
+
+  await Users.updateUser(
+    { RobloxId: robloxProfile.Id },
+    { $inc: { Solidus: -number } }
   );
 
-  serverResponse.success('Nicu', 'AMERICA');
+  let solidusCount = robloxProfile.Solidus || 0;
+
+  solidusCount += -number;
+
+  serverResponse.success(
+    'Solidus removed!',
+    `${robloxProfile.Username}'s Solidus has been decreased to ${solidusCount}.`
+  );
 };

@@ -2,11 +2,14 @@ import { Command } from '../../interfaces';
 import { Embeds } from '../../embeds/embeds';
 import { Users } from '../../functions';
 import { RAPI } from '../../functions';
+import { securityCheck } from '../../functions/commandAdmin';
 
 export const command: Command = {
   name: 'wipesolidus',
   aliases: [''],
   run: async (client, message, args) => {
+    if (!(await securityCheck(message, 2))) return;
+
     const serverResponse = new Embeds(message.channel);
 
     if (!args[0])

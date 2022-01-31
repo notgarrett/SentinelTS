@@ -34,6 +34,6 @@ export const pointsIncrease = async (
 
   serverResponse.success(
     'Success',
-    `${RobloxUserName} has been awarded ${number} points!`
+    `${RobloxUserName} has been awarded ${number} Solidus!`
   );
 };
