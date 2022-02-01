@@ -10,6 +10,9 @@ export const command: Command = {
     const serverResponse = new Embeds(message.channel);
     const discordId = message.member?.id;
     const profile: any = await Users.getUser({ DiscordId: discordId });
+    if (!profile)
+      return serverResponse.failure('Failed.', 'You are not verified.');
+
     let solidus: number = profile.Solidus || 0;
     let name: string = 'L1';
 
