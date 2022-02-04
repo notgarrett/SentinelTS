@@ -3,7 +3,7 @@ import { pointsIncrease } from '../../functions/solidusFunctions/pointsIncrease'
 import { securityCheck } from '../../functions/commandAdmin';
 
 export const command: Command = {
-  name: 'sparhost',
+  name: 'eventhost',
   aliases: [''],
   run: async (client, message, args) => {
     if (!(await securityCheck(message, 2))) return;
