@@ -27,7 +27,11 @@ export const command: Command = {
       if (!profile) continue;
       let discordId = profile.DiscordId;
       if (!discordId) continue;
-      let exists = await message.guild?.members.fetch(discordId);
+      let exists = await message.guild?.members
+        .fetch(discordId)
+        .catch((err) => {
+          return false;
+        });
       if (exists) {
         console.log(profile.RobloxUserName + ' Exists!');
       } else {
