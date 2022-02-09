@@ -3,7 +3,7 @@ import { pointsIncrease } from '../../functions/solidusFunctions/pointsIncrease'
 import { securityCheck } from '../../functions/commandAdmin';
 
 export const command: Command = {
-  name: 'defencewin',
+  name: 'defenseewin',
   aliases: [''],
   run: async (client, message, args) => {
     if (!(await securityCheck(message, 1))) return;

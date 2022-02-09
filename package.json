@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "watch": "tsc -p tsconfig.json -w"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

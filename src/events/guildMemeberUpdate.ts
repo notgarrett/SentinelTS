@@ -7,8 +7,6 @@ export const event: Event = {
   run: (client, oldMember, newMember) => {
     if (newMember.user.bot) return;
 
-    updateNickname(newMember);
-
     if (!newMember) return; //return delete function.
 
     let removedRoles = oldMember.roles.cache.filter(
@@ -18,6 +16,7 @@ export const event: Event = {
     if (removedRoles.size > 0) {
       removedRoles = removedRoles.map((r: any) => r.id);
       removeRoles(removedRoles, newMember);
+      updateNickname(newMember);
       return;
     }
 
@@ -29,7 +28,7 @@ export const event: Event = {
     if (addedRoles.size > 0) {
       addedRoles = addedRoles.map((r: any) => r.id);
       addRoles(addedRoles, newMember);
-
+      updateNickname(newMember);
       return;
     }
   },

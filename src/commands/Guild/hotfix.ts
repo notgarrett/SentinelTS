@@ -25,15 +25,14 @@ export const command: Command = {
       console.log(i);
       const profile = docs[i];
       if (!profile) continue;
-      await sleep(1000);
-      let robloxId = profile.RobloxId;
-      if (!robloxId) continue;
-      let exists = await RAPI.getGroupRankId(5002385, Number(robloxId));
+      let discordId = profile.DiscordId;
+      if (!discordId) continue;
+      let exists = await message.guild?.members.resolve(discordId);
       if (exists) {
         console.log(profile.RobloxUserName + ' Exists!');
       } else {
         console.log(profile.RobloxUserName + ' Does not!');
-        await UserModel.deleteOne({ RobloxId: robloxId });
+        //await UserModel.deleteOne({ DiscordId: discordId });
       }
     }
   },

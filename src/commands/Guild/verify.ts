@@ -14,6 +14,7 @@ export const command: Command = {
   run: async (client, message, args) => {
     const response = new Embeds(message.channel);
 
+    console.log('Response initialized');
     const serverMember: GuildMember | null = message.member;
 
     if (serverMember?.id === undefined)
