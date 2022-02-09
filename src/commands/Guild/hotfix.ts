@@ -39,11 +39,10 @@ export const command: Command = {
         console.log(profile.RobloxUserName + ' Exists!');
       } else {
         console.log(profile.RobloxUserName + ' Does not!');
-        count++;
+        count = count + 1;
         await UserModel.deleteOne({ DiscordId: discordId });
       }
-
-      serverResponse.success('Process finished.', `${count} users wiped.`);
     }
+    serverResponse.success('Process finished.', `${count} users wiped.`);
   },
 };
