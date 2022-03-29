@@ -21,7 +21,7 @@ export const command: Command = {
         if (!robloxUser)
             return channelMessage.failure('Failed.', 'That user does not exist.');
 
-        if (!await banlist.remove(robloxUser.Id))
+        if (!await banlist.remove(robloxUser.Id)) // If false, user is not banned.
             return channelMessage.notification("Notice.", `${args[0]} is not banned.`)
         return channelMessage.success("Success!.", `${args[0]} has been unbanned.`)
     },

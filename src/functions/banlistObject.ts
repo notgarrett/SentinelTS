@@ -6,8 +6,8 @@ const BanlistModel = model<Banlist>('Banlist', banlistModel);
 
 export class banlist {
     static async add(robloxId: string) {
-        if (await BanlistModel.findOne({RobloxId: robloxId})) return false
-        BanlistModel.updateOne(
+        if (await BanlistModel.findOne({RobloxId: robloxId}) != null) return false // whoops
+        await BanlistModel.findOneAndUpdate(
             {RobloxId: robloxId},
             {Empyria: true},
             {upsert: true}
@@ -17,11 +17,9 @@ export class banlist {
 
     static async remove(robloxId: string) {
         console.log(await BanlistModel.findOne({RobloxId: robloxId}))
-        if (await BanlistModel.findOne({RobloxId: robloxId}) == null) return false
-        await BanlistModel.updateOne(
+        if (await BanlistModel.findOne({RobloxId: robloxId}) == null) return false // If user doesnt exist, return false
+        await BanlistModel.findOneAndDelete(
             {RobloxId: robloxId},
-            {Empyria: false},
-            {upsert: true}
         );
         return true;
     }
